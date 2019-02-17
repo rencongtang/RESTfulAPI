@@ -60,8 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="HttpClient.cs" />
+    <Compile Include="ProductController.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

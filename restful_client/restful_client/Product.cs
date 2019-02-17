@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace restful_client
 {
     // the product class is based on what kind of data the server contains, I use the example of Microsoft restful api as default
-    class Product
+    public class Product
     {
         public string Id { get; set; }
         public string Name { get; set; }
