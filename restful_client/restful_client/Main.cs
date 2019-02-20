@@ -18,6 +18,7 @@ namespace restful_client
             
             try
             {
+                // give the address of server
                 ProductController.SettingClient(address);
                 // give the Object parameters, there we use the product, of course, we can also use other different
                 Product product = new Product
