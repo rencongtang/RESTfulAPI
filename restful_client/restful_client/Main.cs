@@ -36,6 +36,14 @@ namespace restful_client
                 product = await ProductController.GetProductAsync(url.PathAndQuery);
                 ProductController.ShowProduct(product);
 
+                //let's have a look at all the producats
+                List<Product> products = new List<Product>();
+                products = await ProductController.GetProductsAsync(address);
+                foreach (Product prod in products)
+                {
+                    ProductController.ShowProduct(prod);
+                }
+
                 //Try to update the product
                 Console.WriteLine("Update price of the product");
                 product.Price = 80;
@@ -45,9 +53,10 @@ namespace restful_client
                 product = await ProductController.GetProductAsync(url.PathAndQuery);
                 ProductController.ShowProduct(product);
 
-                // the last step, delete the product in the server side
-                var statusCode = await ProductController.DeleteProductAsync(product.Id);
-                Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
+                
+                    // the last step, delete the product in the server side
+                //var statusCode = await ProductController.DeleteProductAsync(product.Id);
+                //Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
             }
             catch (Exception e)
             {

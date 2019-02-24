@@ -22,6 +22,7 @@ namespace restful_client
                 new MediaTypeWithQualityHeaderValue("application/json")
                 );
             client_setted = true;
+            Console.WriteLine($"Host location has been setted ad {address}");
         }
 
         private static void ClientNotSetted()
@@ -69,7 +70,7 @@ namespace restful_client
             {
                 SettingClient("http://localhost:64195/");
             }
-                Product product = null;
+            Product product = null;
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
@@ -80,6 +81,14 @@ namespace restful_client
                 Console.WriteLine($"cannot get the object, the error code is {response.EnsureSuccessStatusCode()}");
             }
             return product;
+        }
+
+        public static async Task<List<Product>> GetProductsAsync(string hostAddress)
+        {
+            List<Product> products = new List<Product>();
+            HttpResponseMessage response = await client.GetAsync(hostAddress + "api/products/");
+            products = await response.Content.ReadAsAsync<List<Product>>();
+            return products;
         }
 
         /// <summary>
