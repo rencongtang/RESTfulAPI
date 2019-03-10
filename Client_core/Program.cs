@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 
 namespace Client_core
@@ -21,9 +23,23 @@ namespace Client_core
             //get data from this url as string (this is a string but not avaliable now)
             var stringTask = client.GetStringAsync("https://api.github.com/orgs/dotnet/repos");
 
-            //when the stringTask is avaliable, it will become a string
+            //when the stringTask is avaliable, it will become a string`
             var msg = await stringTask;
-            Console.Write(msg);
+            //Console.Write(msg);
+
+            var serializer = new DataContractJsonSerializer(typeof(List<Repo>));
+
+            // now let's have get the stream of the json data, why we use stream?
+            // because the ReadObject function can only read stream, of course we need to
+            // use await to make sure this stream be fully readed
+            var streamTask = client.GetStreamAsync("https://api.github.com/orgs/dotnet/repos");
+            var repositories = serializer.ReadObject(await streamTask) as List<Repo>;
+            
+            //now let us have a look at the results, we suppose to see all the names of each repo
+            foreach (var repo in repositories)
+            {
+                Console.WriteLine($"the currnet object name is: {repo.name}");
+            }
         }
 
         static void Main(string[] args)

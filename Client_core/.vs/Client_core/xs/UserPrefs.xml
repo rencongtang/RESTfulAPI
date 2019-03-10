@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{BD66DD17-B1C5-45F6-937D-1A0C1B7346A6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="repo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="24" Column="72" />
-      <File FileName="repo.cs" Line="1" Column="7" />
+      <File FileName="Program.cs" Line="30" Column="13" />
+      <File FileName="Repo.cs" Line="7" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +10,7 @@
           <Node name="Client_core" expanded="True">
             <Node name="Client_core" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="repo.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
